@@ -1,0 +1,14 @@
+{% extends "base.twig" %}
+
+{% block contest %}
+	<h2>{{ 'Liste des concours de chant disponibles' }}</h2>
+	{% for post in posts %}
+	<div class="row">
+		<div class="col">
+			{% include ['tease-'~post.post_type~'.twig', 'tease.twig'] %}
+		</div>
+	</div>
+	{% endfor %}
+	
+	{% include 'partial/pagination.twig' with { pagination: posts.pagination({show_all: false, mid_size: 3, end_size: 2}) } %}
+{% endblock %}
